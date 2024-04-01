@@ -1,5 +1,17 @@
 #!/bin/sh
 
+exit_func() {
+  if [ "$SLEEP" = "true"]; then
+    sleep infinity
+  else
+    if [ -f "$1" ]; then
+      exit $1
+    else
+      exit 0
+    fi
+  fi
+}
+
 # Check if exactly 2 arguments are provided
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 URL TARGET_PATH"
@@ -40,16 +52,4 @@ else
 fi
 
 exit_func
-
-exit_func() {
-  if [ "$SLEEP" = "true"]; then
-    sleep infinity
-  else
-    if [ -f "$1" ]; then
-      exit $1
-    else
-      exit 0
-    fi
-  fi
-}
 
