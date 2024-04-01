@@ -3,7 +3,7 @@
 # Check if exactly 2 arguments are provided
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 URL TARGET_PATH"
-  exit 1
+  exit_func 1
 fi
 
 # Assigning command line arguments to variables
@@ -32,9 +32,24 @@ if [ $? -eq 0 ]; then
     echo "Extraction completed successfully."
   else
     echo "An error occurred during extraction."
-    exit 1
+    exit_func 1
   fi
 else
   echo "An error occurred during download."
-  exit 1
+  exit_func 1
 fi
+
+exit_func
+
+exit_func() {
+  if [ "$SLEEP" = "true"]; then
+    sleep infinity
+  else
+    if [ -f "$1" ]; then
+      exit $1
+    else
+      exit 0
+    fi
+  fi
+}
+

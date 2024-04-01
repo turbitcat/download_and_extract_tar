@@ -9,6 +9,8 @@ RUN apk --no-cache add curl tar
 # These can be overridden at docker run command
 ENV URL=http://example.com/myfile.tar
 ENV TARGET_PATH=/data
+# sleep infinity if set to "true" 
+ENV SLEEP=true
 
 # Create the target directory
 RUN mkdir -p ${TARGET_PATH}
