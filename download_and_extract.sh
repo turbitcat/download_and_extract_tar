@@ -1,7 +1,7 @@
 #!/bin/sh
 
 exit_func() {
-  if [ "$SLEEP" = "true"]; then
+  if [ "$SLEEP" = "true" ]; then
     sleep infinity
   else
     if [ -f "$1" ]; then
